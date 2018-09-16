@@ -107,6 +107,9 @@ while (i2 < "2018-09-15") {
   i2 <- as.Date(i2+1)
 }
 
+df_hitters_all <- read.csv("https://raw.githubusercontent.com/bkreis84/Capstone---Baseball/master/daily%20hitters.csv")
+
+
 #colnames(df_pitchers_all)[colnames(df_pitchers_all) == 'i'] <- 'dt'
 
 #Rolling hitter performance, past 7
@@ -136,7 +139,7 @@ df <- df_hitters_all %>%
   mutate(PA_7 = rollapplyr(PA, width = 7, FUN = sum, partial = TRUE)) %>% 
   mutate(PA_7 = lag(PA_7,1))
 
-df2 <- df %>% 
+df <- df %>% 
   arrange(Name, dt) %>%
   group_by(Name) %>% 
   mutate(X1B_YTD = cumsum(X1B)) %>% 
@@ -168,12 +171,12 @@ tms <- team_results_bref("NYM",2018)
 
 
 
-
+#Teams table with commonly used abbreviations
 teams <- read.csv("https://raw.githubusercontent.com/bkreis84/Capstone---Baseball/master/teams.csv")
 abb <- as.character(teams$abbrev)
+abb
 
-length(abb)
-
+#Read in results of games (helps align which team played which team)
 matchups <- data.frame()
 i=1
 while (i <= length(abb)){
@@ -183,7 +186,9 @@ while (i <= length(abb)){
   i = i+1
 }
 
-team_results_bref("NYM", 2018)
+
+
+
 
 library(RCurl)
 library(xml2)
