@@ -1,0 +1,31 @@
+nickname,city,full,abbrev,league
+Braves,Atlanta,Atlanta Braves,ATL,NL
+Brewers,Milwaukee,Milwaukee Brewers,MIL,NL
+Cardinals,St. Louis,St. Louis Cardinals,STL,NL
+Cubs,Chicago,Chicago Cubs,CHC,NL
+Diamondbacks,Arizona,Arizona Diamondbacks,ARI,NL
+Dodgers,Los Angeles,Los Angeles Dodgers,LAD,NL
+Giants,San Francisco,San Francisco Giants,SF,NL
+Marlins,Miami,Miami Marlins,MIA,NL
+Mets,New York,New York Mets,NYM,NL
+Nationals,Washington,Washington Nationals,WSN,NL
+Padres,San Diego,San Diego Padres,SD,NL
+Phillies,Philadelphia,Philadelphia Phillies,PHI,NL
+Pirates,Pittsburgh,Pittsburgh Pirates,PIT,NL
+Reds,Cincinnati,Cincinnati Reds,CIN,NL
+Rockies,Colorado,Colorado Rockies,COL,NL
+Angels,Los Angeles,Los Angeles Angels,LAA,AL
+Astros,Houston,Houston Astros,HOU,AL
+Athletics,Oakland,Oakland Athletics,OAK,AL
+Blue Jays,Toronto,Toronto Blue Jays,TOR,AL
+Indians,Cleveland,Cleveland Indians,CLE,AL
+Mariners,Seattle,Seattle Mariners,SEA,AL
+Orioles,Baltimore,Baltimore Orioles,BAL,AL
+Rangers,Texas,Texas Rangers,TEX,AL
+Rays,Tampa Bay,Tampa Bay Rays,TB,AL
+Red Sox,Boston,Boston Red Sox,BOS,AL
+Royals,Kansas City,Kansas City Royals,KC,AL
+Tigers,Detroit,Detroit Tigers,DET,AL
+Twins,Minnesota,Minnesota Twins,MIN,AL
+White Sox,Chicago,Chicago White Sox,CHW,AL
+Yankees,New York,New York Yankees,NYY,AL

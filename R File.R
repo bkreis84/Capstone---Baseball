@@ -165,13 +165,33 @@ df2 <- df %>%
 
 tms <- team_results_bref("NYM",2018)
 
+
+
+
+
+teams <- read.csv("https://raw.githubusercontent.com/bkreis84/Capstone---Baseball/master/teams.csv")
+abb <- as.character(teams$abbrev)
+
+length(abb)
+
+matchups <- data.frame()
+i=1
+while (i <= length(abb)){
+  dat<- data.frame(team_results_bref(abb[[i]], 2018))
+  dat$team <- abb[[i]]
+  matchups <- rbind(matchups, dat)
+  i = i+1
+}
+
+team_results_bref("NYM", 2018)
+
 library(RCurl)
 library(xml2)
 library(rvest)
 library(stringr)
 library(XML)
 library(dplyr)
-
+# NO LONGER NEEDED
 #Team abbreviations
 url <- "https://en.wikipedia.org/wiki/Wikipedia:WikiProject_Baseball/Team_abbreviations"
 
