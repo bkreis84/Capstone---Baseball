@@ -84,7 +84,11 @@ df_pitchers_all <- df_pitchers_all %>%
          SHO = ifelse(ER==0 & IP==9,1,0),
          CG = ifelse(IP==9,1,0),
          FD_Points = 3*IP + 3*SO + 6*W + -3*ER + 4*QS,
-         DK_Points = 2.25*IP + 2*SO + 4*W + -2*ER+-0.6*H+-0.6*BB + 2.5*CG + 2.5*SHO + 5*NOHT)
+         DK_Points = 2.25*IP + 2*SO + 4*W + -2*ER+-0.6*H+-0.6*BB + 2.5*CG + 2.5*SHO + 5*NOHT,
+         BIP = BF - SO - BB - HBP,
+         GB = BIP * GB.FB,
+         FB = BIP * (1 - GB.FB))
+
 
 #write to csv so can be loaded faster
 setwd("C:/Users/bkrei/Desktop/Bk's Stuff Desktop/School/Github NEW PATH/Capstone---Baseball")
@@ -159,4 +163,36 @@ df2 <- df %>%
   mutate(PA_YTD = lag(PA_YTD,1))
 
 
-  
+tms <- team_results_bref("NYM",2018)
+
+library(RCurl)
+library(xml2)
+library(rvest)
+library(stringr)
+library(XML)
+library(dplyr)
+
+#Team abbreviations
+url <- "https://en.wikipedia.org/wiki/Wikipedia:WikiProject_Baseball/Team_abbreviations"
+
+tms <- url %>%
+  read_html() %>%
+  html_nodes(xpath = '//*[@id="mw-content-text"]/div/ul') 
+
+prse <- xmlParse(tms[[1]])
+lst <- xmlToList(prse)
+df <- do.call(rbind.data.frame, lst)
+
+
+#Return 2 or 3 values (non-greedy-?) ending at look-ahead assertion of equal sign
+abbrev_pos <- ".{2,3}?(?=\\=)"
+
+abbrev <- df[,1] %>% 
+  str_match(abbrev_pos)
+
+name_pos <- ".{2,3}?(?=\\=)"
+
+abbrev <- df[,1] %>% 
+  str_match(abbrev_pos)
+
+
