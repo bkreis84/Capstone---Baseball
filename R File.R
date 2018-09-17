@@ -166,9 +166,6 @@ df <- df %>%
   mutate(PA_YTD = lag(PA_YTD,1))
 
 
-tms <- team_results_bref("NYM",2018)
-
-
 
 
 #Teams table with commonly used abbreviations
@@ -186,10 +183,36 @@ while (i <= length(abb)){
   i = i+1
 }
 
+library(stringr)
+#Pull out the league from main hitter dataframe do not include dash, find any characters after
+lg <- "(?<=\\-).*"
+
+df$Level <- df$Level %>% 
+  str_match(lg)
+
+colnames(df)[colnames(df) == 'Team'] <- 'city'
+colnames(df)[colnames(df) == 'Level'] <- 'league'
+df$league <- df$league[,1]
 
 
+dfm <- merge(df, teams, by = c("city", "league"), all.x = TRUE)
 
 
+datef <- "(?<=[, ]).*"
+
+matchups$newdt <- matchups$Date %>% 
+  str_match(datef)  
+
+matchups$newdt <- paste0(matchups$newdt,"-","2018")  
+matchups$newdt <- sub(" ","", matchups$newdt)
+matchups$newdt <- sub(" ","-", matchups$newdt)
+
+matchups$newdt2 <- strptime(matchups$newdt, "%b-%d-%Y")
+
+class(dfm$dt)
+class(matchups$Date)
+as.Date(matchups$Date)
+as.date
 library(RCurl)
 library(xml2)
 library(rvest)
